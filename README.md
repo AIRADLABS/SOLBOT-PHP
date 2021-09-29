@@ -13,7 +13,7 @@ newFolder - creates a new folder
 
 newFile - creates a new file
 
-read - decrypts and reads any file not deadbolted
+read - decrypts and reads any file
 
 write - encrypts and overwrites any file not deadbolted
 
