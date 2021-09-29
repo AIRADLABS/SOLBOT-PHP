@@ -1,5 +1,26 @@
 # SOLBOT-PHP
 SOLBOT-PHP is an SDK for interacting with the SOLBOT-API.
 
-The lib contains one defined class named solbot that supports the following methods:
+The SDK contains one class named solbot that currently supports the following methods:
 
+send - used internally
+
+info - gets network info
+
+newPod - creates a new pod (dev network only)
+
+newFolder - creates a new folder
+
+newFile - creates a new file
+
+read - decrypts and reads any file not deadbolted
+
+write - encrypts and overwrites any file not deadbolted
+
+deadboltGet - generates a random deadbolt (hash)
+
+deadbolt - deadbolts a file
+
+deadboltRemove - removes a deadbolt
+
+list - lists the contents of a folder
