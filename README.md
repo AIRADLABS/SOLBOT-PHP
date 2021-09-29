@@ -3,16 +3,13 @@ SOLBOT-PHP is an SDK for interacting with the SOLBOT-API.
 
 EXAMPLE USAGE
 
-// import solbot
-
+import solbot
 require("1.0-prototype.php");
 
-// start solbot
-
+start solbot
 $solbot = new solbot();
 
-// get network info
-
+get network info
 $result = $solbot->info();
 
 // generate newpod on the dev network
