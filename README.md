@@ -1,6 +1,6 @@
 # SOLBOT-PHP
 
-SOLBOT-PHP is an SDK for interacting with the SOLBOT-API on the solbots.io network.
+An SDK for interacting with the SOLBOT-API on the solbots.io network.
 
 The SDK contains one class named solbot that currently supports the following methods:
 
