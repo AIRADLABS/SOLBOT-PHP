@@ -4,6 +4,8 @@ An SDK for interacting with the SOLBOT-API on the solbots.io network.
 
 The SDK contains one class named solbot that currently supports the following methods:
 
+v0.1+
+
 send - used internally
 
 info - gets network info
@@ -25,3 +27,11 @@ deadbolt - deadbolts a file
 deadboltRemove - removes a deadbolt
 
 list - lists the contents of a folder
+
+v0.2+
+
+rename - renames a folder or file (if not deadbolted)
+
+move - moves a folder or file (if not deadbolted)
+
+copy - makes a copy of a file (appends -COPY)
