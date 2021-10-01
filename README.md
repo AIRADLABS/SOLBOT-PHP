@@ -38,10 +38,9 @@ move - moves a folder or file (if not deadbolted)
 
 copy - makes a copy of a file or folder (appends -COPY)
 
+.................................................................................................
 
 Example Usage:
-
-.................................................................................................
 
 header('Content-Type: application/json');
 
