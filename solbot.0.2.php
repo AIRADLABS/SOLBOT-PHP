@@ -1,7 +1,7 @@
 <?
 ////////////////////////////////////////////////////////////////////////
 // SOLBOT-PHP: (c) 2021 AIRAD LABS INC.
-// VERSIONS: 0.2
+// VERSION: 0.2 (pre-release)
 // This code is licensed under MIT license (see LICENSE.txt for details)
 ////////////////////////////////////////////////////////////////////////
 
@@ -13,6 +13,7 @@ class solbot {
 ////////////////////////////////////////////////////////////////////////
 public function __construct( $pod_network , $pod_address , $pod_key ) {
 $this->network = $pod_network;
+$this->version = "0.2";
 if(!isset($this->payload)){
 $this->payload = new stdClass;
 }
@@ -27,7 +28,7 @@ public function send() {
 $path = $this->protocol.$this->network;
 $ch = curl_init( $path );
 if( isset( $this->payload->command ) ) {
-$path = $path."/".$this->payload->command;
+$path = $path."/".$this->payload->command.str_replace(".","-",$this->version)."/";
 $data = json_encode( $this->payload );
 $data = array( "payload" => $data );
 $data = http_build_query( $data );
@@ -112,15 +113,19 @@ $this->payload->command = "deadboltGet/";
 return $this->send();
 }
 ////////////////////////////////////////////////////////////////////////
-  
+
 ////////////////////////////////////////////////////////////////////////
-public function deadbolt( $pod_file="" , $deadbolt=false ) {
-if( $deadbolt == false ){
+public function deadbolt( $pod_file=false , $pod_deadbolt=false ) {
+if( $pod_deadbolt == false ){
 return array("status"=>"error","message"=>"No Deadbolt Supplied!");
+}
+elseif( $pod_file == false ){
+return array("status"=>"error","message"=>"No File Supplied!");
 }
 else{
 $this->payload->command = "deadbolt/";
-$this->payload->deadbolt = $deadbolt;
+$this->payload->pod_deadbolt = $pod_deadbolt;
+$this->payload->pod_file = $pod_file;
 return $this->send();
 }
 }
@@ -133,7 +138,8 @@ return array("status"=>"error","message"=>"No Deadbolt Supplied!");
 }
 else{
 $this->payload->command = "deadboltRemove/";
-$this->payload->deadbolt = $deadbolt;
+$this->payload->pod_deadbolt = $deadbolt;
+$this->payload->pod_file = $pod_file;
 return $this->send();
 }
 }
@@ -168,6 +174,7 @@ return $this->send();
 ////////////////////////////////////////////////////////////////////////
 public function rename( $renamefrom=false , $renameto=false, $format=false ) {
 $this->payload->command = "rename/";
+
 if( $renamefrom == false or $renameto == false ){
 $result = array( "status" => "error" , "message" => "No filename provided!" );
 }
@@ -175,23 +182,31 @@ else{
 $this->payload->pod_renamefrom = $renamefrom;
 $this->payload->pod_renameto = $renameto;
 }
+
 if( $format == "json" ){
 $this->payload->pod_format = $format;
 }
 elseif( $format == "txt" ){
 $this->payload->pod_format = $format;
 }
+
+return $this->send();
+
 if( isset( $result["status"] ) ){
-return $result;
+//return $result;
 }
 else{
-return $this->send();
+//return $this->send();
 }
+
+
+
 }
 ////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
 public function copy( $pod_path=false , $pod_format=false ) {
+
 $this->payload->command = "copy/";
 
 if( $pod_path == false ){
@@ -201,11 +216,11 @@ else{
 $this->payload->pod_path = $pod_path;
 }
 
-if( $format == "json" ){
-$this->payload->pod_format = $format;
+if( $pod_format == "json" ){
+$this->payload->pod_format = $pod_format;
 }
-elseif( $format == "txt" ){
-$this->payload->pod_format = $format;
+elseif( $pod_format == "txt" ){
+$this->payload->pod_format = $pod_format;
 }
 
 if( isset( $result["status"] ) ){
@@ -220,25 +235,32 @@ return $this->send();
 ////////////////////////////////////////////////////////////////////////
 public function move( $movefrom=false , $moveto=false, $format=false ) {
 $this->payload->command = "move/";
-if( $movefrom == false or $moveto == false ){
+
+if( $movefrom == false ){
 $result = array( "status" => "error" , "message" => "No filename provided!" );
 }
 else{
 $this->payload->pod_movefrom = $movefrom;
+}
+
+if( $movefrom !== false ){
 $this->payload->pod_moveto = $moveto;
 }
+
 if( $format == "json" ){
 $this->payload->pod_format = $format;
 }
 elseif( $format == "txt" ){
 $this->payload->pod_format = $format;
 }
+
 if( isset( $result["status"] ) ){
 return $result;
 }
 else{
 return $this->send();
 }
+
 }
 ////////////////////////////////////////////////////////////////////////
 
