@@ -9,32 +9,32 @@ This SDK contains one class named solbot that currently supports the following m
 
 v0.1+
 
-send - used internally
+<strong>send</strong> - used internally
 
-info - gets network info
+<strong>info</strong> - gets network info
 
-newPod - creates a new pod (dev network only)
+<strong>newPod</strong> - creates a new pod (dev network only)
 
-newFolder - creates a new folder
+<strong>newFolder</strong> - creates a new folder
 
-newFile - creates a new file
+<strong>newFile</strong> - creates a new file
 
-read - decrypts and reads any file
+<strong>read</strong> - decrypts and reads any file
 
-write - encrypts and overwrites any file not deadbolted
+<strong>write</strong> - encrypts and overwrites any file not deadbolted
 
-deadboltGet - generates a random deadbolt (hash)
+<strong>deadboltGet</strong> - generates a random deadbolt (hash)
 
-deadbolt - deadbolts a file
+<strong>deadbolt</strong> - deadbolts a file
 
-deadboltRemove - removes a deadbolt
+<strong>deadboltRemove</strong> - removes a deadbolt
 
-list - lists the contents of a folder
+<strong>list</strong> - lists the contents of a folder
 
 v0.2+
 
-rename - renames a folder or file (if not deadbolted)
+<strong>rename</strong> - renames a folder or file (if not deadbolted)
 
-move - moves a folder or file (if not deadbolted)
+<strong>move</strong> - moves a folder or file (if not deadbolted)
 
-copy - makes a copy of a file or folder (appends -COPY)
+<strong>copy</strong> - makes a copy of a file or folder (appends -COPY)
