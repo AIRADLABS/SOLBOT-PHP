@@ -9,7 +9,7 @@
 // For development we are allowing the creation of new pods on our dev network. 
 // This effectively bypasses the ownership verification of an associated NFT.
 // 
-// Open the page below in your browser to generate a new pod.
+// Open this page in your browser to generate a new pod.
 // http://dev.solbots.io/bypass/bypass.php
 // 
 // The output will contain your new pod address and pod key.
