@@ -1,5 +1,5 @@
-![solbots.io](http://dev.solbots.io/assets/img/Crypto-Carl-1920x1080.jpg)
 # SOLBOT-PHP
+![solbots.io](http://dev.solbots.io/assets/img/Crypto-Carl-1920x1080.jpg)
 
 An SDK for interacting with the SOLBOT-API on the solbots.io network.
 
