@@ -1,7 +1,7 @@
 <?
 // *********************************************************************
 // SOLBOT-PHP EXAMPLES (c) 2021 AIRAD LABS INC.
-// VERSION: 0.3 (pre-release)
+// VERSION: 0.4 (pre-release)
 // This code is licensed under MIT license (see LICENSE.txt for details)
 // *********************************************************************
 
@@ -9,7 +9,7 @@
 // For development we are allowing the creation of new pods on our dev network. 
 // This effectively bypasses the ownership verification of an associated NFT.
 // 
-// Open this page in your browser to generate a new pod.
+// Click the link below to generate a new pod.
 // http://dev.solbots.io/bypass/bypass.php
 // 
 // The output will contain your new pod address and pod key.
@@ -26,13 +26,13 @@
 //         "properties": false,
 //         "owner": "0bb400349c8a42345b5573c6666bee3efe768712bed2268f5bcd03eaf7a89636",
 //         "expires": 1664756091.720955,
-//         "pod": "solbot.2UjZXTXVUT2ZMSlFaST06OnAE8yRzVBb3R2UjZXTXVUT2ZMSlFaST06OnAGNShbOz1RvXgegZtwWCE=", // This is the pod address!
+//         "pod": "solbot.L3pUdHM1aXE1N2ZJOGFtUzBoemtIUE8yRzVBb3R2UjZXTXVUT2ZMSlFaST06OnAGNShbOz1RvXgegZtwWCE=", // This is the pod address!
 //         "user": false,
 //         "claimed": 1633220091.720955,
 //         "status": "online",
 //         "updated": 1633220091.720955,
 //         "created": 1633220091.702492,
-//         "key": "solbot.1633220091.7210.3c4afb2638dfb2sfb2638d33aab42638dda9dda64be5afb2638dfb2sfb2638d33aab4297" // This is the pod key!
+//         "key": "solbot.1633220091.7210.3c4afb2638dfb2sfb2638d33aab42638dda9dda64be5e33aab4a53414b4c8a7f24297" // This is the pod key!
 //     }
 // }
 //
@@ -44,8 +44,12 @@ header('Content-Type: application/json');
 
 // *********************************************************************
 // import and start solbot (on the dev network)
-require("solbot.0.3.php");
+require("solbot.0.4.php");
 // $solbot = new solbot( "dev.solbots.io" , "YOUR_ADDRESS_HERE", "YOUR_KEY_HERE" );
+$solbot = new solbot( 
+  "dev.solbots.io" , 
+  "solbot.alVVMTJuL1NPNG4wbFp3VFIvWEhqTEp0K3NPOGQ5dEwvYWwxdi9ibnM2ST06OrTNNmD02aNZWJJli3wPzJQ=", 
+  "solbot.1633256067.5683.586239f20c85bf72f749ae73323b9113afb284757b91d3bc0bee4be3bb2c42c9" );
 // *********************************************************************
 
 // *********************************************************************
@@ -70,9 +74,9 @@ require("solbot.0.3.php");
 
 // *********************************************************************
 // create json files for each folder (for structured data)
-// $result = $solbot->newFile("folder_1/json_1");
-// $result = $solbot->newFile("folder_1/folder_2/json_2");
-// $result = $solbot->newFile("folder_1/folder_2/folder_3/json_3");
+// $result = $solbot->newFile("folder_1/json_1","json");
+// $result = $solbot->newFile("folder_1/folder_2/json_2","json");
+// $result = $solbot->newFile("folder_1/folder_2/folder_3/json_3","json");
 // *********************************************************************
 // create a txt files for each folder (for non-structured data)
 // $result = $solbot->newFile("folder_1/txt_1","txt");
@@ -83,11 +87,11 @@ require("solbot.0.3.php");
 // *********************************************************************
 // overwrite json file 1
 // $data = new stdClass();
-// $data->test = "Hi JSON File 1";
-// $result = $solbot->write("folder_1/json_1","json",$data);
+// $data->test = "New JSON File!";
+// $result = $solbot->write("folder_1/testme",false,$data);
 // *********************************************************************
 // overwrite text file 1
-// $data = "Hi TXT File 1";
+// $data = "New TXT File!";
 // $result = $solbot->write("folder_1/txt_1","txt",$data);
 // *********************************************************************
 
