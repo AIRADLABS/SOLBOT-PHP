@@ -3,7 +3,9 @@
 
 An SDK for interacting with the SOLBOT-API on the solbots.io network.
 
-About SOLBOT-API -> https://github.com/AIRADLABS/SOLBOT-API
+About SOLBOT-API: https://github.com/AIRADLABS/SOLBOT-API
+
+Generate Dev Credentials: https://dev.solbots.io/bypass/bypass.php
 
 This SDK contains one class named solbot that currently supports the following methods:
 
