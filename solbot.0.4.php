@@ -1,7 +1,7 @@
 <?
 ////////////////////////////////////////////////////////////////////////
 // SOLBOT-PHP: (c) 2021 AIRAD LABS INC.
-// VERSION: 0.3 (pre-release)
+// VERSION: 0.4 (pre-release)
 // This code is licensed under MIT license (see LICENSE.txt for details)
 ////////////////////////////////////////////////////////////////////////
 
@@ -15,7 +15,7 @@ class solbot {
 public function __construct( $pod_network , $pod_address , $pod_key ) {
 $this->protocol = (!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off'||$_SERVER['SERVER_PORT']==443)?"https://":"http://";
 $this->network = $pod_network;
-$this->version = "0.3";
+$this->version = "0.4";
 if(!isset($this->payload)){
 $this->payload = new stdClass;
 }
@@ -52,6 +52,7 @@ $options = array(
 curl_setopt_array( $ch , $options );
 $result = curl_exec( $ch );
 curl_close( $ch );
+//return stripslashes($result);
 return $result;
 }
 ////////////////////////////////////////////////////////////////////////
@@ -75,7 +76,7 @@ return $this->send();
 
 ////////////////////////////////////////////////////////////////////////
 // creates a new json or txt file // json by default
-public function newFile( $pod_file="" , $pod_format="json" ) {
+public function newFile( $pod_file="" , $pod_format=false ) {
 $this->payload->command = "newFile/";
 $this->payload->pod_file = $pod_file;
 $this->payload->pod_format = $pod_format;
@@ -103,7 +104,7 @@ return $this->send();
 
 ////////////////////////////////////////////////////////////////////////
 // overwrites the contents of a file // false = json or specify txt
-public function write( $pod_file="" , $pod_format="json" , $pod_data ) {
+public function write( $pod_file="" , $pod_format=false , $pod_data ) {
 $this->payload->command = "write/";
 $this->payload->pod_file = $pod_file;
 $this->payload->pod_format = $pod_format;
@@ -185,6 +186,7 @@ return $this->send();
 // renames a folder // or any txt or json file if a format is specified
 public function rename( $renamefrom=false , $renameto=false , $format=false ) {
 $this->payload->command = "rename/";
+
 if( $renamefrom == false or $renameto == false ){
 $result = array( "status" => "error" , "message" => "No filename provided!" );
 }
@@ -192,37 +194,54 @@ else{
 $this->payload->pod_renamefrom = $renamefrom;
 $this->payload->pod_renameto = $renameto;
 }
+
 if( $format == "json" ){
 $this->payload->pod_format = $format;
 }
 elseif( $format == "txt" ){
 $this->payload->pod_format = $format;
 }
+
 return $this->send();
+
+if( isset( $result["status"] ) ){
+//return $result;
+}
+else{
+//return $this->send();
+}
+
+
+
 }
 ////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
 // copies a folder // or any txt or json file if a format is specified
 public function copy( $pod_path=false , $pod_format=false ) {
+
 $this->payload->command = "copy/";
+
 if( $pod_path == false ){
 $result = array( "status" => "error" , "message" => "No file or folder specified!" );
 }
 else{
 $this->payload->pod_path = $pod_path;
 }
+
 if( $pod_format == "json" ){
 $this->payload->pod_format = $pod_format;
 }
 elseif( $pod_format == "txt" ){
 $this->payload->pod_format = $pod_format;
 }
+
 if( isset( $result["status"] ) ){
 return $result;
 }else{
 return $this->send();
 }
+
 }
 ////////////////////////////////////////////////////////////////////////
 
@@ -230,27 +249,32 @@ return $this->send();
 // moves a folder // or any txt or json file if a format is specified
 public function move( $movefrom=false , $moveto=false , $format=false ) {
 $this->payload->command = "move/";
+
 if( $movefrom == false ){
 $result = array( "status" => "error" , "message" => "No filename provided!" );
 }
 else{
 $this->payload->pod_movefrom = $movefrom;
 }
+
 if( $movefrom !== false ){
 $this->payload->pod_moveto = $moveto;
 }
+
 if( $format == "json" ){
 $this->payload->pod_format = $format;
 }
 elseif( $format == "txt" ){
 $this->payload->pod_format = $format;
 }
+
 if( isset( $result["status"] ) ){
 return $result;
 }
 else{
 return $this->send();
 }
+
 }
 ////////////////////////////////////////////////////////////////////////
 
