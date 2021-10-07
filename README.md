@@ -13,32 +13,32 @@ This SDK contains one class named solbot that currently supports the following m
 
 v0.1+
 
-<strong>send</strong> - used internally
+&nbsp;&nbsp;&bull; <strong>send</strong> - used internally
 
-<strong>info</strong> - gets network info
+&nbsp;&nbsp;&bull; <strong>info</strong> - gets network info
 
-<strong>newPod</strong> - creates a new pod (dev network only)
+&nbsp;&nbsp;&bull; <strong>newPod</strong> - creates a new pod (dev network only)
 
-<strong>newFolder</strong> - creates a new folder
+&nbsp;&nbsp;&bull; <strong>newFolder</strong> - creates a new folder
 
-<strong>newFile</strong> - creates a new file
+&nbsp;&nbsp;&bull; <strong>newFile</strong> - creates a new file
 
-<strong>read</strong> - decrypts and reads any file
+&nbsp;&nbsp;&bull; <strong>read</strong> - decrypts and reads any file
 
-<strong>write</strong> - encrypts and overwrites any file not deadbolted
+&nbsp;&nbsp;&bull; <strong>write</strong> - encrypts and overwrites any file not deadbolted
 
-<strong>deadboltGet</strong> - generates a random deadbolt (hash)
+&nbsp;&nbsp;&bull; <strong>deadboltGet</strong> - generates a random deadbolt (hash)
 
-<strong>deadbolt</strong> - deadbolts a file
+&nbsp;&nbsp;&bull; <strong>deadbolt</strong> - deadbolts a file
 
-<strong>deadboltRemove</strong> - removes a deadbolt
+&nbsp;&nbsp;&bull; <strong>deadboltRemove</strong> - removes a deadbolt
 
-<strong>list</strong> - lists the contents of a folder
+&nbsp;&nbsp;&bull; <strong>list</strong> - lists the contents of a folder
 
 v0.2+
 
-<strong>rename</strong> - renames a folder or file (if not deadbolted)
+&nbsp;&nbsp;&bull; <strong>rename</strong> - renames a folder or file (if not deadbolted)
 
-<strong>move</strong> - moves a folder or file (if not deadbolted)
+&nbsp;&nbsp;&bull; <strong>move</strong> - moves a folder or file (if not deadbolted)
 
-<strong>copy</strong> - makes a copy of a file or folder (appends -COPY)
+&nbsp;&nbsp;&bull; <strong>copy</strong> - makes a copy of a file or folder (appends -COPY)
