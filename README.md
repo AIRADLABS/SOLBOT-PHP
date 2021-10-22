@@ -17,8 +17,6 @@ v0.1+
 
 &nbsp;&nbsp;&bull; <strong>info</strong> - gets network info
 
-&nbsp;&nbsp;&bull; <strong>newPod</strong> - creates a new pod (dev network only)
-
 &nbsp;&nbsp;&bull; <strong>newFolder</strong> - creates a new folder
 
 &nbsp;&nbsp;&bull; <strong>newFile</strong> - creates a new file
