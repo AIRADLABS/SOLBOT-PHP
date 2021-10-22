@@ -11,9 +11,7 @@ An SDK for interacting with the SOLBOT-API on the solbots.io network.
 
 This SDK contains one class named solbot that currently supports the following methods:
 
-v0.1+
-
-&nbsp;&nbsp;&bull; <strong>send</strong> - used internally
+Methods
 
 &nbsp;&nbsp;&bull; <strong>info</strong> - gets network info
 
@@ -32,8 +30,6 @@ v0.1+
 &nbsp;&nbsp;&bull; <strong>deadboltRemove</strong> - removes a deadbolt
 
 &nbsp;&nbsp;&bull; <strong>list</strong> - lists the contents of a folder
-
-v0.2+
 
 &nbsp;&nbsp;&bull; <strong>rename</strong> - renames a folder or file (if not deadbolted)
 
