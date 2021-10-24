@@ -1,7 +1,7 @@
 <?
 // *********************************************************************
 // SOLBOT-PHP EXAMPLES (c) 2021 AIRAD LABS INC.
-// VERSION: 0.4 (pre-release)
+// VERSION: 0.5 (pre-release)
 // This code is licensed under MIT license (see LICENSE.txt for details)
 // *********************************************************************
 
@@ -9,10 +9,10 @@
 // For development we are allowing the creation of new pods on our dev network. 
 // This effectively bypasses the ownership verification of an associated NFT.
 // 
-// Click the link below to generate a new pod.
+// The link below will generate a new pod.
 // http://dev.solbots.io/bypass/bypass.php
 // 
-// The output will contain your new pod address and pod key.
+// The output will contain your new pod address and pod key for development.
 // Copy the output to a notepad!
 // Example Output:
 // 
@@ -44,7 +44,7 @@ header('Content-Type: application/json');
 
 // *********************************************************************
 // import and start solbot (on the dev network)
-require("solbot.0.4.php");
+require("solbot.0.5.php");
 // $solbot = new solbot( "dev.solbots.io" , "YOUR_ADDRESS_HERE", "YOUR_KEY_HERE" );
 $solbot = new solbot( 
   "dev.solbots.io" , 
@@ -52,19 +52,17 @@ $solbot = new solbot(
   "solbot.1633256067.5683.586239f20c85bf72f749ae73323b9113afb284757b91d3bc0bee4be3bb2c42c9" );
 // *********************************************************************
 
-// *********************************************************************
-// output the default construct (only use for development)
-// $result = $solbot->object();
-// $array = json_decode( $result );
-// $result = null;
-// print_r($array);
-// *********************************************************************
+// you can run this file in your browser to test examples after you install it on your server
+// https://yoursite.com/path-to-the-file/examples.php 
+// uncomment any command below and refresh the page to test it
 
+// info
 // *********************************************************************
 // get network details // verifys you have access to the network
-// $result = $solbot->info();
+$result = $solbot->info();
 // *********************************************************************
 
+// newFolder
 // *********************************************************************
 // create folders in your pod // a practice folder tree
 // $result = $solbot->newFolder("folder_1");
@@ -72,6 +70,7 @@ $solbot = new solbot(
 // $result = $solbot->newFolder("folder_1/folder_2/folder_3");
 // *********************************************************************
 
+// newFile
 // *********************************************************************
 // create json files for each folder (for structured data)
 // $result = $solbot->newFile("folder_1/json_1","json");
@@ -84,6 +83,7 @@ $solbot = new solbot(
 // $result = $solbot->newFile("folder_1/folder_2/folder_3/txt_3","txt");
 // *********************************************************************
 
+// write
 // *********************************************************************
 // overwrite json file 1
 // $data = new stdClass();
@@ -95,21 +95,7 @@ $solbot = new solbot(
 // $result = $solbot->write("folder_1/txt_1","txt",$data);
 // *********************************************************************
 
-// *********************************************************************
-// get new deadbolt
-// $result = $solbot->deadboltGet();
-// *********************************************************************
-// deadbolt json file 1
-// $result = $solbot->deadbolt("folder_1/json_1","f235b567d010eef2e0075de5be0800a5a5eec63f11936d206c9b35080dc64b1");
-// *********************************************************************
-// read deadbolted json file 1
-// $result = $solbot->read("folder_1/json_1","f235b567d010eef2e0075de5be0800a5a5eec63f11936d206c9b35080dc64b1");
-// *********************************************************************
-// *********************************************************************
-// remove deadbolt
-// $result = $solbot->deadboltRemove("folder_1/json_1","f235b567d010eef2e0075de5be0800a5a5eec63f11936d206c9b35080dc64b1");
-// *********************************************************************
-
+// read
 // *********************************************************************
 // read json file 1
 // $result = $solbot->read("folder_1/json_1",);
@@ -121,6 +107,7 @@ $solbot = new solbot(
 // $result = $solbot->read("folder_1/json_1",false,true);
 // *********************************************************************
 
+// rename
 // *********************************************************************
 // rename json file 3 to "funny_json_3"
 // $result = $solbot->rename("folder_1/folder_2/folder_3/json_3","funny_json_3","json");
@@ -132,6 +119,7 @@ $solbot = new solbot(
 // $result = $solbot->rename("folder_1/folder_2/folder_3","funny_folder");
 // *********************************************************************
 
+// move
 // *********************************************************************
 // move json file 2 to root
 // $result = $solbot->move("folder_1/folder_2/json_2",false,"json");
@@ -143,9 +131,10 @@ $solbot = new solbot(
 // $result = $solbot->move("folder_1/folder_2/funny_folder");
 // *********************************************************************
 
+// copy
 // *********************************************************************
 // copy json file 2
-// $result = $solbot->copy("json_2","json");
+// $result = $solbot->copy("my_pod_file","json");
 // *********************************************************************
 // copy text file 2
 // $result = $solbot->copy("folder_1/txt_2","txt");
@@ -154,9 +143,45 @@ $solbot = new solbot(
 // $result = $solbot->copy("folder_1/folder_2");
 // *********************************************************************
 
+// list
 // *********************************************************************
 // list folder with options
 // $result = $solbot->list("folder_1",array("filter"=>"folders","sort"=>"name","order"=>"asc"));
 // *********************************************************************
+
+// deleteFile
+// *********************************************************************
+// deletes a json file, if its not deadbolted
+// $result = $solbot->deleteFile("folder_1/folder_2/my_pod_file");
+// delete a txt file
+// $result = $solbot->deleteFile("folder_1/txt_2", "txt");
+// *********************************************************************
+
+// deleteFolder
+// *********************************************************************
+// deletes a folder, if its empty
+// $result = $solbot->deleteFolder("folder_1/folder_2/folder_3");
+// *********************************************************************
+
+// *********************************************************************
+// DEADBOLTING
+// *********************************************************************
+// deadboltGet
+// generates a new random deadbolt
+// $result = $solbot->deadboltGet();
+// *********************************************************************
+// deadbolt
+// deadbolts a json file
+// $result = $solbot->deadbolt("folder_1/json_1","f235b567d010eef2e0075de5be0800a5a5eec63f11936d206c9b35080dc64b1");
+// *********************************************************************
+// read (with deadbolt)
+// read a deadbolted json file
+// $result = $solbot->read("folder_1/json_1","f235b567d010eef2e0075de5be0800a5a5eec63f11936d206c9b35080dc64b1");
+// *********************************************************************
+// deadboltRemove
+// removes a deadbolt from a json file
+// $result = $solbot->deadboltRemove("folder_1/json_1","f235b567d010eef2e0075de5be0800a5a5eec63f11936d206c9b35080dc64b1");
+// *********************************************************************
+
 
 if(isset($result)){echo $result;}
