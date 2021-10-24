@@ -13,7 +13,8 @@ class solbot {
 ////////////////////////////////////////////////////////////////////////
 // initial object construct after instantiation
 public function __construct( $pod_network , $pod_address , $pod_key ) {
-$this->protocol = (!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off'||$_SERVER['SERVER_PORT']==443)?"https://":"http://";
+$this->protocol = (!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off'
+||$_SERVER['SERVER_PORT']==443)?"https://":"http://";
 $this->network = $pod_network;
 $this->version = "0.5";
 if(!isset($this->payload)){
