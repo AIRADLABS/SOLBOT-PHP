@@ -9,7 +9,7 @@ An SDK for interacting with the SOLBOT-API on the solbots.io network.
 
 &nbsp;&nbsp;&bull; Copy your credentials to a notepad and save the file on your computer or flash drive!
 
-This SDK contains one class named solbot that currently supports the following methods:
+THe SDK contains one class named solbot that currently has the following methods as of v0.5 (pre-release)
 
 Methods
 
