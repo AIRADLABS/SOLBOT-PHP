@@ -13,8 +13,7 @@ class solbot {
 ////////////////////////////////////////////////////////////////////////
 // initial object construct after instantiation
 public function __construct( $pod_network , $pod_address , $pod_key ) {
-$this->protocol = (!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off'
-||$_SERVER['SERVER_PORT']==443)?"https://":"http://";
+$this->protocol = (!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off'||$_SERVER['SERVER_PORT']==443)?"https://":"http://";
 $this->network = $pod_network;
 $this->version = "0.5";
 if(!isset($this->payload)){
@@ -22,13 +21,6 @@ $this->payload = new stdClass;
 }
 $this->payload->pod_address = $pod_address;
 $this->payload->pod_key = $pod_key;
-}
-////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////
-// dev only // remove before live deployment
-public function object() {
-return json_encode( $this );  
 }
 ////////////////////////////////////////////////////////////////////////
 
@@ -43,17 +35,16 @@ $data = json_encode( $this->payload );
 $data = array( "payload" => $data );
 $data = http_build_query( $data );
 $options = array( 
-  CURLOPT_URL => $path , 
-  CURLOPT_RETURNTRANSFER => true ,
-  CURLOPT_HTTPHEADER => array('Content-Type:application/x-www-form-urlencoded','Content-Length:'.strlen( $data ) ), 
-  CURLOPT_POST => 1 , 
-  CURLOPT_POSTFIELDS => $data 
+CURLOPT_URL => $path , 
+CURLOPT_RETURNTRANSFER => true ,
+CURLOPT_HTTPHEADER => array('Content-Type:application/x-www-form-urlencoded','Content-Length:'.strlen( $data ) ), 
+CURLOPT_POST => 1 , 
+CURLOPT_POSTFIELDS => $data 
 );
 }
 curl_setopt_array( $ch , $options );
 $result = curl_exec( $ch );
 curl_close( $ch );
-//return stripslashes($result);
 return $result;
 }
 ////////////////////////////////////////////////////////////////////////
@@ -122,20 +113,20 @@ if( $pod_folder !== "root" and $pod_folder !== false ) {
 $this->payload->pod_folder = $pod_folder;
 }
 if( $options !== false and is_array( $options ) ) {
-  foreach( $options as $key => $val ){
-    if( $key == "filter" ){
-      $this->payload->pod_filter = $val;
-    }
-    elseif( $key == "format" ){
-      $this->payload->pod_format = $val;
-    }
-    elseif( $key == "sort" ){
-      $this->payload->pod_sort = $val;
-    }
-    elseif( $key == "order" ){
-      $this->payload->pod_order = $val;
-    }
-  }
+foreach( $options as $key => $val ){
+if( $key == "filter" ){
+$this->payload->pod_filter = $val;
+}
+elseif( $key == "format" ){
+$this->payload->pod_format = $val;
+}
+elseif( $key == "sort" ){
+$this->payload->pod_sort = $val;
+}
+elseif( $key == "order" ){
+$this->payload->pod_order = $val;
+}
+}
 }
 return $this->send();
 }
@@ -145,7 +136,6 @@ return $this->send();
 // renames a folder // or any txt or json file if a format is specified
 public function rename( $renamefrom=false , $renameto=false , $format=false ) {
 $this->payload->command = "rename/";
-
 if( $renamefrom == false or $renameto == false ){
 $result = array( "status" => "error" , "message" => "No filename provided!" );
 }
@@ -153,54 +143,37 @@ else{
 $this->payload->pod_renamefrom = $renamefrom;
 $this->payload->pod_renameto = $renameto;
 }
-
 if( $format == "json" ){
 $this->payload->pod_format = $format;
 }
 elseif( $format == "txt" ){
 $this->payload->pod_format = $format;
 }
-
 return $this->send();
-
-if( isset( $result["status"] ) ){
-//return $result;
-}
-else{
-//return $this->send();
-}
-
-
-
 }
 ////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
 // copies a folder // or any txt or json file if a format is specified
 public function copy( $pod_path=false , $pod_format=false ) {
-
 $this->payload->command = "copy/";
-
 if( $pod_path == false ){
 $result = array( "status" => "error" , "message" => "No file or folder specified!" );
 }
 else{
 $this->payload->pod_path = $pod_path;
 }
-
 if( $pod_format == "json" ){
 $this->payload->pod_format = $pod_format;
 }
 elseif( $pod_format == "txt" ){
 $this->payload->pod_format = $pod_format;
 }
-
 if( isset( $result["status"] ) ){
 return $result;
 }else{
 return $this->send();
 }
-
 }
 ////////////////////////////////////////////////////////////////////////
 
@@ -208,32 +181,27 @@ return $this->send();
 // moves a folder // or any txt or json file if a format is specified
 public function move( $movefrom=false , $moveto=false , $format=false ) {
 $this->payload->command = "move/";
-
 if( $movefrom == false ){
 $result = array( "status" => "error" , "message" => "No filename provided!" );
 }
 else{
 $this->payload->pod_movefrom = $movefrom;
 }
-
 if( $movefrom !== false ){
 $this->payload->pod_moveto = $moveto;
 }
-
 if( $format == "json" ){
 $this->payload->pod_format = $format;
 }
 elseif( $format == "txt" ){
 $this->payload->pod_format = $format;
 }
-
 if( isset( $result["status"] ) ){
 return $result;
 }
 else{
 return $this->send();
 }
-
 }
 ////////////////////////////////////////////////////////////////////////
 
