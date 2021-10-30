@@ -1,66 +1,40 @@
 # SOLBOT-PHP
 ![solbots.io](http://dev.solbots.io/assets/img/Crypto-Carl-1920x1080.jpg)
 
-An SDK for interacting with the SOLBOT-API on the solbots.io network.
+An SDK for interacting with the SOLBOT-API and the solbots.io network.
 
-&nbsp;&nbsp;&bull; About SOLBOT-API: https://github.com/AIRADLABS/SOLBOT-API
+About SOLBOT-API: https://github.com/AIRADLABS/SOLBOT-API
 
-The SDK contains one class named solbot that has the following methods.
+# CLASS
 
-Methods
+<strong>solbot</strong>
 
-<strong>info</strong>
+# METHODS
 
-&nbsp;&nbsp;&bull; gets network info
+<strong>info</strong> &bull; <i>gets network info</i>
 
-<strong>newFolder</strong>
+<strong>newFolder</strong> &bull; <i>creates a new folder</i>
 
-&nbsp;&nbsp;&bull; creates a new folder
+<strong>newFile</strong> &bull; <i>creates a new file</i>
 
-<strong>newFile</strong>
+<strong>read</strong> &bull; <i>decrypts and reads file</i>
 
-&nbsp;&nbsp;&bull; creates a new file
+<strong>write</strong> &bull; <i>encrypts and overwrites any file not deadbolted</i>
 
-<strong>read</strong>
+<strong>list</strong> &bull; <i>lists the contents of a folder</i>
 
-&nbsp;&nbsp;&bull; decrypts and reads file
+<strong>rename</strong> &bull; <i>renames a folder or file (if not deadbolted)</i>
 
-<strong>write</strong>
+<strong>move</strong> &bull; <i>moves a folder or file (if not deadbolted)</i>
 
-&nbsp;&nbsp;&bull; encrypts and overwrites any file not deadbolted
+<strong>copy</strong> &bull; <i>makes a copy of a file or folder (appends -COPY)</i>
 
-<strong>list</strong>
+<strong>deleteFile</strong> &bull; <i>delete's a file, if it's not a deadbolted json file</i>
 
-&nbsp;&nbsp;&bull; lists the contents of a folder
+<strong>deleteFolder</strong> &bull; <i>delete's a folder, if it's empty</i>
 
-<strong>rename</strong>
+<strong>deadboltGet</strong> &bull; <i>generates a random deadbolt (hash)</i>
 
-&nbsp;&nbsp;&bull; renames a folder or file (if not deadbolted)
+<strong>deadbolt</strong> &bull; <i>deadbolts a file</i>
 
-<strong>move</strong>
-
-&nbsp;&nbsp;&bull; moves a folder or file (if not deadbolted)
-
-<strong>copy</strong>
-
-&nbsp;&nbsp;&bull; makes a copy of a file or folder (appends -COPY)
-
-<strong>deleteFile</strong>
-
-&nbsp;&nbsp;&bull; delete's a file, if it's not a deadbolted json file
-
-<strong>deleteFolder</strong>
-
-&nbsp;&nbsp;&bull; delete's a folder, if it's empty
-
-<strong>deadboltGet</strong>
-
-&nbsp;&nbsp;&bull; generates a random deadbolt (hash)
-
-<strong>deadbolt</strong>
-
-&nbsp;&nbsp;&bull; deadbolts a file
-
-<strong>deadboltRemove</strong>
-
-&nbsp;&nbsp;&bull; removes a deadbolt
+<strong>deadboltRemove</strong> &bull; <i>removes a deadbolt</i>
