@@ -5,7 +5,7 @@ An SDK for interacting with the SOLBOT-API on the solbots.io network.
 
 &nbsp;&nbsp;&bull; About SOLBOT-API: https://github.com/AIRADLABS/SOLBOT-API
 
-The SDK contains one class named solbot that currently has the following methods as of v0.5 (pre-release)
+The SDK contains one class named solbot that has the following methods.
 
 Methods
 
