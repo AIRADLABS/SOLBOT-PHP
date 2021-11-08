@@ -1,41 +1,8 @@
 <?
 // *********************************************************************
 // SOLBOT-PHP EXAMPLES (c) 2021 AIRAD LABS INC.
-// VERSION: 0.5 (pre-release)
+// VERSION: 0.6 (pre-release)
 // This code is licensed under MIT license (see LICENSE.txt for details)
-// *********************************************************************
-
-// *********************************************************************
-// For development we are allowing the creation of new pods on our dev network. 
-// This effectively bypasses the ownership verification of an associated NFT.
-// 
-// The link below will generate a new pod.
-// http://dev.solbots.io/bypass/bypass.php
-// 
-// The output will contain your new pod address and pod key for development.
-// Copy the output to a notepad!
-// Example Output:
-// 
-// {
-//     "status": "success",
-//     "message": "Pod Online!",
-//     "data": {
-//         "token": "b0316c27ef755c1434db35ea9d6da2ed92a50c6f20f61ab5be21a40332ff856e",
-//         "mint": "6cce36d9f8a9e151b100234af75cca89d55bcb94c153f51847debdf1f39cae45",
-//         "signature": "7a220893a5674a153f1fad576112ad5871a3b1dcb5a22988e6719a74a68fbd8c",
-//         "properties": false,
-//         "owner": "0bb400349c8a42345b5573c6666bee3efe768712bed2268f5bcd03eaf7a89636",
-//         "expires": 1664756091.720955,
-//         "pod": "solbot.L3pUdHM1aXE1N2ZJOGFtUzBoemtIUE8yRzVBb3R2UjZXTXVUT2ZMSlFaST06OnAGNShbOz1RvXgegZtwWCE=", // This is the pod address!
-//         "user": false,
-//         "claimed": 1633220091.720955,
-//         "status": "online",
-//         "updated": 1633220091.720955,
-//         "created": 1633220091.702492,
-//         "key": "solbot.1633220091.7210.3c4afb2638dfb2sfb2638d33aab42638dda9dda64be5e33aab4a53414b4c8a7f24297" // This is the pod key!
-//     }
-// }
-//
 // *********************************************************************
 
 // *********************************************************************
@@ -44,7 +11,7 @@ header('Content-Type: application/json');
 
 // *********************************************************************
 // import and start solbot (on the dev network)
-require("solbot.0.5.php");
+require("solbot.0.6.php");
 // $solbot = new solbot( "dev.solbots.io" , "YOUR_ADDRESS_HERE", "YOUR_KEY_HERE" );
 $solbot = new solbot( 
   "dev.solbots.io" , 
@@ -93,6 +60,12 @@ $result = $solbot->info();
 // overwrite text file 1
 // $data = "New TXT File!";
 // $result = $solbot->write("folder_1/txt_1","txt",$data);
+// *********************************************************************
+
+// append
+// *********************************************************************
+// append a new line of data to a text file
+// $result = $solbot->append("folder_1/txt_1",txt,"New Appended Text!")
 // *********************************************************************
 
 // read
