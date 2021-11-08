@@ -21,6 +21,8 @@ About SOLBOT-API: https://github.com/AIRADLABS/SOLBOT-API
 
 <strong>write</strong> &bull; <i>encrypts and overwrites any file not deadbolted</i>
 
+<strong>append</strong> &bull; <i>appends a new line to a text file</i>
+
 <strong>list</strong> &bull; <i>lists the contents of a folder</i>
 
 <strong>rename</strong> &bull; <i>renames a folder or file (if not deadbolted)</i>
