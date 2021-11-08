@@ -1,7 +1,7 @@
 <?
 ////////////////////////////////////////////////////////////////////////
 // SOLBOT-PHP: (c) 2021 AIRAD LABS INC.
-// VERSION: 0.5 (pre-release)
+// VERSION: 0.6 (pre-release)
 // This code is licensed under MIT license (see LICENSE.txt for details)
 ////////////////////////////////////////////////////////////////////////
 
@@ -13,15 +13,21 @@ class solbot {
 ////////////////////////////////////////////////////////////////////////
 // initial object construct after instantiation
 public function __construct( $pod_network , $pod_address , $pod_key ) {
-$this->protocol = (!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off'
-||$_SERVER['SERVER_PORT']==443)?"https://":"http://";
+$this->protocol = (!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off'||$_SERVER['SERVER_PORT']==443)?"https://":"http://";
 $this->network = $pod_network;
-$this->version = "0.5";
+$this->version = "0.6";
 if(!isset($this->payload)){
 $this->payload = new stdClass;
 }
 $this->payload->pod_address = $pod_address;
 $this->payload->pod_key = $pod_key;
+}
+////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////
+// dev only // remove before live deployment
+public function object() {
+return json_encode( $this );  
 }
 ////////////////////////////////////////////////////////////////////////
 
@@ -99,6 +105,17 @@ return $this->send();
 // overwrites the contents of a file // false = json or specify txt
 public function write( $pod_file="" , $pod_format=false , $pod_data ) {
 $this->payload->command = "write/";
+$this->payload->pod_file = $pod_file;
+$this->payload->pod_format = $pod_format;
+$this->payload->pod_data = $pod_data;
+return $this->send();
+}
+////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////
+// appends data to a text file (json not yet supported)
+public function append( $pod_file="" , $pod_format=false , $pod_data ) {
+$this->payload->command = "append/";
 $this->payload->pod_file = $pod_file;
 $this->payload->pod_format = $pod_format;
 $this->payload->pod_data = $pod_data;
