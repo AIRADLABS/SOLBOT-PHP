@@ -1,7 +1,7 @@
 <?
 // *********************************************************************
 // SOLBOT-PHP EXAMPLES (c) 2021 AIRAD LABS INC.
-// VERSION: 0.7 (pre-release)
+// VERSION: 0.8 (pre-release)
 // This code is licensed under MIT license (see LICENSE.txt for details)
 // *********************************************************************
 
@@ -11,7 +11,7 @@ header('Content-Type: application/json');
 
 // *********************************************************************
 // import and start solbot (on the dev network)
-require("solbot.0.7.php");
+require("solbot.0.8.php");
 // $solbot = new solbot( "dev.solbots.io" , "YOUR_ADDRESS_HERE", "YOUR_KEY_HERE" );
 $solbot = new solbot( 
   "dev.solbots.io" , 
@@ -119,7 +119,7 @@ $result = $solbot->info();
 // list
 // *********************************************************************
 // list folder with options
-// $result = $solbot->list("folder_1",array("filter"=>"folders","sort"=>"name","order"=>"asc"));
+// $result = $solbot->list("folder_1",array("filter"=>"folders","sort"=>"name","order"=>"asc","offset"=>1,"limit"=>10));
 // *********************************************************************
 
 // deleteFile
@@ -155,5 +155,6 @@ $result = $solbot->info();
 // removes a deadbolt from a json file
 // $result = $solbot->deadboltRemove("folder_1/json_1","f235b567d010eef2e0075de5be0800a5a5eec63f11936d206c9b35080dc64b1");
 // *********************************************************************
+
 
 if(isset($result)){echo $result;}
