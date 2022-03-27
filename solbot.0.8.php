@@ -1,7 +1,7 @@
 <?
 ////////////////////////////////////////////////////////////////////////
 // SOLBOT-PHP: (c) 2021 AIRAD LABS INC.
-// VERSION: 0.7 (pre-release)
+// VERSION: 0.8 (pre-release)
 // This code is licensed under MIT license (see LICENSE.txt for details)
 ////////////////////////////////////////////////////////////////////////
 
@@ -15,7 +15,7 @@ class solbot {
 public function __construct( $pod_network , $pod_address , $pod_key ) {
 $this->protocol = (!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off'||$_SERVER['SERVER_PORT']==443)?"https://":"http://";
 $this->network = $pod_network;
-$this->version = "0.7";
+$this->version = "0.8";
 if(!isset($this->payload)){
 $this->payload = new stdClass;
 }
@@ -143,6 +143,12 @@ $this->payload->pod_sort = $val;
 }
 elseif( $key == "order" ){
 $this->payload->pod_order = $val;
+}
+elseif( $key == "offset" ){
+$this->payload->pod_offset = $val;
+}
+elseif( $key == "limit" ){
+$this->payload->pod_limit = $val;
 }
 }
 }
